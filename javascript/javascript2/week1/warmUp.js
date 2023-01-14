@@ -18,22 +18,13 @@ function findDanishLetters(danishString) {
     const danishLetterÆ = [];
     danishString = danishString.split("");
     for (i=0; i<danishString.length; i++) {
-        if (danishString[i] === "å") {
+        if (danishString[i].toLowerCase() === "å") {
             danishLetterÅ.push(danishString[i]);
         }
-        else if (danishString[i] === "Å") {
-            danishLetterÅ.push(danishString[i]);
-        }
-        else if (danishString[i] === "ø") {
+        else if (danishString[i].toLowerCase() === "ø") {
             danishLetterØ.push(danishString[i]);
         }
-        else if (danishString[i] === "Ø") {
-            danishLetterØ.push(danishString[i]);
-        }
-        else if (danishString[i] === "æ") {
-            danishLetterÆ.push(danishString[i]);
-        }
-        else if (danishString[i] === "Æ") {
+        else if (danishString[i].toLowerCase() === "æ") {
             danishLetterÆ.push(danishString[i]);
         }
     }

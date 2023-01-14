@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Spirit animal name generator</h1>
+        <h2>Please enter your name:</h2>
+        <input type="text">
+        <button type="button" class="getName">Get a spirit name</button>
+        <button type="button" class="getNewName">Get a new spirit name</button>
+    </div>
+    <div class="outPut">Your spirit name appears here</div>
+    <script>
+        const spiritAnimals = ["Howling Wolf", 
+        "Roaring Lion",
+        "Crouching Tiger",
+        "Crazy Frog",
+        "Flying Fish",
+        "Jumping Horse",
+        "Swimming Duck",
+        "Barking Dog",
+        "Running Cat",
+        "Sneaky Mouse"];
+        const randomSpirit = spiritAnimals[Math.floor(Math.random() * spiritAnimals.length)];
+        const spiritRoll = spiritAnimals[Math.floor(Math.random() * spiritAnimals.length)];
+        let spiritOutput;
+        let anotherSpiritOutput;
+        document.querySelector('.getName').onclick = myClick;
+        function myClick() {
+        let userName = document.querySelector('input').value;
+        if (userName !== "") {
+            spiritOutput = `${userName} - ${randomSpirit}`;
+            document.querySelector('.outPut').innerHTML = spiritOutput;
+        }
+        else {
+            alert("You need to enter your name");
+            }
+        }
+        document.querySelector('.getNewName').onclick = mySecondClick;
+        function mySecondClick() {
+            const anotherRandomSpirit = spiritAnimals[Math.floor(Math.random() * spiritAnimals.length)];
+            let userName = document.querySelector('input').value;
+            if (userName !== "") {
+                anotherSpiritOutput = `${userName} - ${anotherRandomSpirit}`;
+                if (anotherSpiritOutput === spiritOutput) {
+                    anotherSpiritOutput = `${userName} - ${spiritRoll}`;
+                    document.querySelector('.outPut').innerHTML = anotherSpiritOutput;
+                }
+                else {
+                document.querySelector('.outPut').innerHTML = anotherSpiritOutput;
+                }
+            }
+            else {
+                alert('You need to enter your name first and press "Get a spirit name button"');
+            }
+        }
+    </script>
+</body>
+</html>

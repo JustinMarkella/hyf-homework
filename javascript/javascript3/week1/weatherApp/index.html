@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="index.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="#" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Weather app</h1>
+    <div class="Butt_input">
+      <button class="myPos">My local weather</button>
+      <input type="text" />
+      <button class="butt1">Get weather</button>
+    </div>
+    <div class="main">
+      <h2></h2>
+      <p class="temp"></p>
+      <img class="clouds" />
+      <p class="descr"></p>
+      <p class="wind"></p>
+      <p class="sun"></p>
+      <p class="time"></p>
+    </div>
+    <div class="premap">
+      <div id="map"></div>
+    </div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkbz-WsGSgMKQsnXoSv_QfS-Yk0ejR8Zo&callback=initMap&v=weekly"
+      async
+      defer
+    ></script>
+    <!-- <script src="index.js"></script> -->
+  </body>
+</html>

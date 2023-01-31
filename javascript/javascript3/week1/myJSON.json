@@ -1,0 +1,20 @@
+[
+  {
+    "cars": {
+      "opel": {
+        "engine volume(liters)": 2,
+        "dors": 5,
+        "horsepower": 105,
+        "colours": ["black", "white", "red"],
+        "aviable": false
+      },
+      "wolksvagen": {
+        "engine volume(liters)": 1.6,
+        "dors": 3,
+        "horsepower": 125,
+        "colours": ["black", "silver", "blue"],
+        "aviable": true
+      }
+    }
+  }
+]

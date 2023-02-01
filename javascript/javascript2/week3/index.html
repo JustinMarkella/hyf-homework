@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script type="module" src="warmUp.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <button class="butt">Click me!</button>
+      <button class="showLoc">Show location</button>
+      <div id="map" style="position: absolute; bottom: 0"></div>
+      <!-- <script src="warmUp.js"></script> -->
+      <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkbz-WsGSgMKQsnXoSv_QfS-Yk0ejR8Zo&callback=initMap&v=weekly"
+        defer
+      ></script>
+    </main>
+  </body>
+</html>

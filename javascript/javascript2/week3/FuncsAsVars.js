@@ -1,5 +1,5 @@
 // Create an array with 3 items. All items should be functions. Iterate through the array and call all the functions.
-const funcArray = [funcA(), funcB(), funcC()];
+const funcArray = [funcA, funcB, funcC];
 function funcA() {
   console.log("a");
 }

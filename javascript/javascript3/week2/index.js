@@ -6,11 +6,10 @@ async function getDataFromApi() {
   try {
     const response = await fetch(api_url);
     const data = await response.json();
-    const currencies = data.rates;
+    const currnecyCode = data.rates;
     function getCurrencies(obj) {
       for (const key in obj) {
         const value = obj[key];
-        currency[0].innerHTML += `<option value=${value}>${key}</option>`;
         if (key === "DKK") {
           currency[0].innerHTML += `<option selected="selected" value=${value}>${key}</option>`;
         } else if (key === "EUR") {
@@ -21,7 +20,7 @@ async function getDataFromApi() {
         }
       }
     }
-    getCurrencies(currencies);
+    getCurrencies(currnecyCode);
   } catch (error) {
     console.log(error);
   }
@@ -33,6 +32,9 @@ function countAmount() {
   let currencyFrom = currency[0].value;
   let currencyTo = currency[1].value;
   let amountValue = document.querySelector(".fromInput").value;
+  if (amountValue <= 0) {
+    alert("Please put a valid number");
+  }
   let resultInput = document.querySelector(".toInput");
   let result = (amountValue / currencyFrom) * currencyTo;
   resultInput.value = `${result.toFixed(2)}`;

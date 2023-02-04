@@ -11,14 +11,14 @@
     <h1>Currency calculator</h1>
     <div class="formOne">
       <select name="exchange_rate" class="currency"></select>
-      <input type="number" class="fromInput" />
+      <input type="number" min="0" class="fromInput" />
     </div>
     <div class="button_block">
       <button class="exchange">Exchange</button>
     </div>
     <div class="formTwo">
       <select name="exchange_rate" class="currency"></select>
-      <input type="number" class="toInput" />
+      <input type="number" class="toInput" disabled />
     </div>
     <script src="index.js"></script>
   </body>

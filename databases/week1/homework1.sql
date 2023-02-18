@@ -1,10 +1,10 @@
 -- 1. Select the names and phones of all users;
 
-SELECT id, phone FROM user;
+SELECT name, phone FROM user;
 
 -- 2. Select the name of the user with id=10;
 
-SELECT * FROM user WHERE id=10;
+SELECT name FROM user WHERE id=10;
 
 -- 3. Find how many users exist in the database;
 

@@ -1,0 +1,189 @@
+// Creating DB
+use('HomeworkDB');
+// Creating 3 Collections
+db.createCollection('Meal');
+db.createCollection('Reservation');
+db.createCollection('Review');
+// Inserting documents to the Meal collection 
+db.Meal.insertMany( [{
+  _id: ObjectId("64025b889328325c72d72682"),
+  title : 'Borsch',
+  description : 'Ukrainian soup',
+  location : 'Vangvej 12, 7950 Erslev',
+  when : '2023-03-01 18:00:00',
+  maxreservation : 12,
+  price :  55.50,
+  created_date : '2023-02-28'
+},
+{
+  _id: ObjectId("64025b889328325c72d72683"),
+  title : 'Varenyky',
+  description : 'Ukrainian dumplings',
+  location : 'Morsøvej 2A, 8800 Viborg',
+  when : '2023-03-01 14:00:00',
+  maxreservation : 36,
+  price :  38.00,
+  created_date : '2023-02-27'
+},
+{
+  _id: ObjectId("64025b889328325c72d72684"),
+  title : 'Frikadeller med brun sauce og kartofler',
+  description : 'Danish meal',
+  location : 'Klotrupvej 8, 8832 Skals',
+  when : '2023-03-01 14:00:00',
+  maxreservation : 8,
+  price :  45.50,
+  created_date : '2023-03-01'
+}]);
+// Inserting documents to the Reservation collection 
+use('HomeworkDB'); //I have to write it again, otherwise it insert 
+// documents to the test db.
+db.Reservation.insertMany([{
+  _id: ObjectId("64028b7113d160b71d1576fe"),
+  number_of_guests : 4,
+  meal_id : ObjectId("64025b889328325c72d72683"),
+  created_date : '2023-03-01',
+  contact_phone_number : 50123456, 
+  contact_name : 'Mr.Andreson',
+  contact_email : 'abrakadabra@gmail.com'
+},
+{
+  _id: ObjectId("64028b7113d160b71d1576ff"), 
+  number_of_guests : 12,
+  meal_id : ObjectId("64025b889328325c72d72684"),
+  created_date : '2023-02-28',
+  contact_phone_number :  50654321, 
+  contact_name : 'Eleonora Doubt',
+  contact_email : 'e.doubt@gmail.com'
+},
+{
+  _id: ObjectId("64028b7113d160b71d157700"),
+  number_of_guests : 6,
+  meal_id : ObjectId("64025b889328325c72d72682"),
+  created_date : '2023-02-27',
+  contact_phone_number :  50132435, 
+  contact_name : 'Tina Terner',
+  contact_email : 't.terner@gmail.com'
+}]);
+// Inserting documents to the Review collection 
+use('HomeworkDB');
+db.Review.insertMany([{
+  _id: ObjectId("64028b7113d160b71d1576fb"),
+  title : 'Best borsch',
+  description : 'It is the best borsch I have ever tried!!1',
+  meal_id : db.Meal.find()[0]._id,
+  stars : 5, 
+  created_date : '2022-02-12'
+},
+{
+  _id: ObjectId("64028b7113d160b71d1576fc"),
+  title : 'Not good, not bad',
+  description : 'Like a regular potato and frikadeles',
+  meal_id : db.Meal.find()[1]._id,
+  stars : 4, 
+  created_date : '2022-02-15'
+},
+{
+  _id: ObjectId("64028b7113d160b71d1576fd"),
+  title : 'Good but...',
+  description : 'It is delicious, but could be better',
+  meal_id : db.Meal.find()[2]._id,
+  stars : 4, 
+  created_date : '2022-02-02'
+}]);
+
+// I've tried to do foreign keys like this guy, but it doesn't work :C 
+// https://www.youtube.com/watch?v=7cYT0Qbu9tU&t=108s&ab_channel=Technotip
+
+// db.Review.insertMany([{
+//   _id: ObjectId("64028b7113d160b71d1576fb"),
+//   title : 'Best borsch',
+//   description : 'It is the best borsch I have ever tried!!1',
+//   meal_id : ObjectId("64025b889328325c72d72682"),
+//   stars : 5, 
+//   created_date : '2022-02-12'
+// },
+// {
+//   _id: ObjectId("64028b7113d160b71d1576fc"),
+//   title : 'Not good, not bad',
+//   description : 'Like a regular potato and frikadeles',
+//   meal_id : ObjectId("64025b889328325c72d72683"),
+//   stars : 4, 
+//   created_date : '2022-02-15'
+// },
+// {
+//   _id: ObjectId("64028b7113d160b71d1576fd"),
+//   title : 'Good but...',
+//   description : 'It is delicious, but could be better',
+//   meal_id : ObjectId("64025b889328325c72d72684"),
+//   stars : 4, 
+//   created_date : '2022-02-02'
+// }]);
+
+// Show all documents in the Meal collection
+use('HomeworkDB');
+db.Meal.find();
+// Find limited amount of documents from Review. In this case limit is one
+use('HomeworkDB');
+db.Review.find().limit(1);
+// Find and skip first 2 results
+use('HomeworkDB');
+db.Reservation.find().skip(2);
+// Show a document in the Meal where maxreservation = 12
+use('HomeworkDB');
+db.Meal.find({maxreservation: 12});
+// Show a document in the Reservation where contact name is Tina Terner and phone number 50132435
+use('HomeworkDB');
+db.Reservation.find({contact_name: 'Tina Terner', contact_phone_number : 50132435 });
+// Show a document in the Review where created date is 2022-02-15 or stars is 5
+use('HomeworkDB');
+db.Review.find({$or: [{created_date : '2022-02-15'},{stars : 5}] });
+// Show a document in the Reservation where stars less or equal to 4 (also we can use gte - greater then or equals, ne - not equal), or just gt or nt.
+use('HomeworkDB');
+db.Review.find({stars: {$lte: 4}});
+// Show a document in the Review where object id is 64025b889328325c72d72682
+use('HomeworkDB');
+db.Reservation.findOne({_id: ObjectId("64025b889328325c72d72682")});
+// Change a document where contact_name = Tina Terner to Dina Burner and her email to d.burner@gmail.com
+use('HomeworkDB');
+db.Reservation.updateOne(
+    {contact_name : 'Tina Terner'},
+    {
+        $set: {
+            contact_name : 'Dina Burner',
+            contact_email : 'd.burner@gmail.com'
+        }
+    }
+);
+// Change a name of the field "stars" to "rate" in the Review collection
+use('HomeworkDB');
+db.Review.updateMany(
+    {},
+        {
+            $rename: {stars : 'rate'}
+        }
+);
+// Delete document from Meal collection
+use('HomeworkDB');
+db.Meal.deleteOne({title: 'Borsch'});
+// Create and delete by one query
+use('HomeworkDB');
+db.Meal.bulkWrite([
+    {
+        insertOne: {
+                _id: ObjectId("64025b889328325c72d72685")
+                title : 'Tasty Borsch',
+                description : 'Ukrainian soup',
+                location : 'Vangvej 12, 7950 Erslev',
+                when : '2023-03-01 18:00:00',
+                maxreservation : 12,
+                price :  55.50,
+                created_date : '2023-02-28'
+        }
+    },
+    {
+        deleteOne: {
+            filter: {title : 'Varenyky'}
+        }
+    }
+]);

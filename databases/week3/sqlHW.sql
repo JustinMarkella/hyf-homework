@@ -4,48 +4,48 @@ USE Homework3DB;
 
 CREATE TABLE Meal (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `title` VARCHAR(255),
+    `title` VARCHAR(255) NOT NULL,
     `description` TEXT,
-    `location` VARCHAR(255),
-    `when` DATETIME,
-    `maxreservation` INT,
-    `price` DECIMAL(10, 2),
-    `created_date` DATE,
+    `location` VARCHAR(255) NOT NULL,
+    `when` DATETIME NOT NULL,
+    `maxreservation` INT NOT NULL,
+    `price` DECIMAL(10, 2) NOT NULL,
+    `created_date` DATE NOT NULL,
     PRIMARY KEY(`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE Reservation(
     `id` INT NOT NULL AUTO_INCREMENT,
-    `number_of_guests` INT,
-    `meal_id` INT,
-    `created_date` DATE,
-    `contact_phone_number` VARCHAR(255),
-    `contact_name` VARCHAR(255),
-    `contact_email` VARCHAR(255),
+    `number_of_guests` INT NOT NULL,
+    `meal_id` INT NOT NULL,
+    `created_date` DATE NOT NULL,
+    `contact_phone_number` VARCHAR(255) NOT NULL,
+    `contact_name` VARCHAR(255) NOT NULL,
+    `contact_email` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (meal_id) REFERENCES `Meal` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE Review(
     `id` INT NOT NULL AUTO_INCREMENT,
-    `title` VARCHAR(255),
+    `title` VARCHAR(255) NOT NULL,
     `description` TEXT,
-    `meal_id` INT,
-    `stars` INT,
-    `created_date` DATE,
+    `meal_id` INT NOT NULL,
+    `stars` INT NOT NULL,
+    `created_date` DATE NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (meal_id) REFERENCES `Meal` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 INSERT INTO
     Meal (
-        title,
-        description,
-        location,
+        `title`,
+        `description`,
+        `location`,
         `when`,
-        maxreservation,
-        price,
-        created_date
+        `maxreservation`,
+        `price`,
+        `created_date`
     )
 VALUES
     (
@@ -60,13 +60,13 @@ VALUES
 
 INSERT INTO
     Meal (
-        title,
-        description,
-        location,
+        `title`,
+        `description`,
+        `location`,
         `when`,
-        maxreservation,
-        price,
-        created_date
+        `maxreservation`,
+        `price`,
+        `created_date`
     )
 VALUES
     (
@@ -81,13 +81,13 @@ VALUES
 
 INSERT INTO
     Meal (
-        title,
-        description,
-        location,
+        `title`,
+        `description`,
+        `location`,
         `when`,
-        maxreservation,
-        price,
-        created_date
+        `maxreservation`,
+        `price`,
+        `created_date`
     )
 VALUES
     (
@@ -121,12 +121,12 @@ VALUES
 
 INSERT INTO
     Reservation (
-        number_of_guests,
-        meal_id,
-        created_date,
-        contact_phone_number,
-        contact_name,
-        contact_email
+        `number_of_guests`,
+        `meal_id`,
+        `created_date`,
+        `contact_phone_number`,
+        `contact_name`,
+        `contact_email`
     )
 VALUES
     (
@@ -140,12 +140,12 @@ VALUES
 
 INSERT INTO
     Reservation (
-        number_of_guests,
-        meal_id,
-        created_date,
-        contact_phone_number,
-        contact_name,
-        contact_email
+        `number_of_guests`,
+        `meal_id`,
+        `created_date`,
+        `contact_phone_number`,
+        `contact_name`,
+        `contact_email`
     )
 VALUES
     (
@@ -159,11 +159,11 @@ VALUES
 
 INSERT INTO
     Review (
-        title,
-        description,
-        meal_id,
-        stars,
-        created_date
+        `title`,
+        `description`,
+        `meal_id`,
+        `stars`,
+        `created_date`
     )
 VALUES
     (
@@ -176,11 +176,11 @@ VALUES
 
 INSERT INTO
     Review (
-        title,
-        description,
-        meal_id,
-        stars,
-        created_date
+        `title`,
+        `description`,
+        `meal_id`,
+        `stars`,
+        `created_date`
     )
 VALUES
     (
@@ -193,11 +193,11 @@ VALUES
 
 INSERT INTO
     Review (
-        title,
-        description,
-        meal_id,
-        stars,
-        created_date
+        `title`,
+        `description`,
+        `meal_id`,
+        `stars`,
+        `created_date`
     )
 VALUES
     (
@@ -209,7 +209,7 @@ VALUES
     );
 
 SELECT
-    id
+    `id`
 FROM
     `Reservation`
 WHERE
@@ -230,7 +230,7 @@ WHERE
     maxreservation < 10;
 
 SELECT
-    contact_email
+    `contact_email`
 FROM
     `Reservation`
 WHERE

@@ -62,6 +62,7 @@ async function postData() {
 async function getData() {
   document.querySelector(".screenshot").classList.add("hide");
   document.querySelector(".messageForUser").innerHTML = "";
+  let data;
   try {
     const response = await fetch(
       `https://crudcrud.com/api/${CRUDCRUD_API_KEY}/savedlinks`,
@@ -72,23 +73,23 @@ async function getData() {
         },
       }
     );
-    const data = await response.json();
-    const listElement = document.querySelector(".listOutput");
-    listElement.innerHTML = "";
-    data.forEach((element) => {
-      if (element.userEmailValue === userEmail.value) {
-        listElement.innerHTML += `<p>${element._id}</p>
-      <img class="screenshot" src="${element.screenshotUrl}" alt="${element.screenshotUrl} screenshot">
-      <button data-id="${element._id}" class="deleteScreenshot">Delete</button>`;
-      }
-    });
-
-    [...document.querySelectorAll(".deleteScreenshot")].forEach((element) => {
-      element.addEventListener("click", deleteData);
-    });
+    data = await response.json();
   } catch (error) {
     console.log(error);
   }
+  const listElement = document.querySelector(".listOutput");
+  listElement.innerHTML = "";
+  data.forEach((element) => {
+    if (element.userEmailValue === userEmail.value) {
+      listElement.innerHTML += `<p>${element._id}</p>
+      <img class="screenshot" src="${element.screenshotUrl}" alt="${element.screenshotUrl} screenshot">
+      <button data-id="${element._id}" class="deleteScreenshot">Delete</button>`;
+    }
+  });
+
+  [...document.querySelectorAll(".deleteScreenshot")].forEach((element) => {
+    element.addEventListener("click", deleteData);
+  });
 }
 
 // Delete data (screenshot + id)

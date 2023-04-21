@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import TodoItem from "./TodoItem";
 
 function TodoList() {
   const [todo, setTodo] = useState([
@@ -52,18 +53,14 @@ function TodoList() {
       <button onClick={AddTodoItem}>Create Random Todo</button>
       {todo.length > 0 ? (
         <ul>
-          {todo.map((item) => {
-            return (
-              <li
-                className={item.crossOut ? "notCrossedOut" : "crossedOut"}
-                key={item.id}
-              >
-                {item.description}
-                <input type="checkbox" onChange={() => CrossOutItem(item)} />
-                <button onClick={() => DeleteTodoItem(item.id)}>Delete</button>
-              </li>
-            );
-          })}
+          {todo.map((item) => (
+            <TodoItem
+              key={item.id}
+              item={item}
+              deleteItem={DeleteTodoItem}
+              crossOutItem={CrossOutItem}
+            />
+          ))}
         </ul>
       ) : (
         <p>Todo list is empty</p>

@@ -1,25 +1,8 @@
-import React from "react";
-import LifeCycleComponent from "./LifeCycleComponent";
-import TodoItem from "./TodoItem";
-
-const BorderComponent = ({
-  item,
-  EditTodoItem,
-  DeleteTodoItem,
-  CrossOutItem,
-}) => {
-  return (
-    <div className="border">
-      {/* <LifeCycleComponent /> */}
-      <TodoItem
-        key={item.id}
-        item={item}
-        EditTodoItem={EditTodoItem}
-        DeleteTodoItem={DeleteTodoItem}
-        CrossOutItem={CrossOutItem}
-      />
-    </div>
-  );
-};
-
-export default BorderComponent;
+export default function BorderComponent({ children }) {
+  const BorderComponentStyle = {
+    border: "3px solid black",
+    margin: "10px 0px",
+    padding: "5px",
+  };
+  return <div style={BorderComponentStyle}>{children}</div>;
+}

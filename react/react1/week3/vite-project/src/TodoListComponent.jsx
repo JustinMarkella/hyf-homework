@@ -102,13 +102,15 @@ function TodoList() {
                 setUpdatedValue={setUpdatedValue}
               />
             ) : (
-              <BorderComponent
-                key={item.id}
-                item={item}
-                EditTodoItem={EditTodoItem}
-                DeleteTodoItem={DeleteTodoItem}
-                CrossOutItem={CrossOutItem}
-              />
+              <BorderComponent key={item.id}>
+                <TodoItem
+                  key={item.id}
+                  item={item}
+                  EditTodoItem={EditTodoItem}
+                  DeleteTodoItem={DeleteTodoItem}
+                  CrossOutItem={CrossOutItem}
+                />
+              </BorderComponent>
             )
           )}
         </ul>

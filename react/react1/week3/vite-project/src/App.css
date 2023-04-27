@@ -1,0 +1,21 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+}
+.crossedOut {
+  text-decoration: line-through;
+}
+.notCrossedOut {
+  text-decoration: none;
+}
+.border {
+  border: 3px solid teal;
+  margin: 10px 0px;
+}

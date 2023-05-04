@@ -13,17 +13,24 @@ app.get("/", (req, res) => {
 });
 app.get("/search", (req, res) => {
   try {
-    const userQuery = req.query.q.toLowerCase();
-    const filteredDocument = documents.filter((info) => {
-      for (const [key, value] of Object.entries(info)) {
-        const valueString = String(value).toLowerCase();
-        const keyString = String(key).toLowerCase();
-        if (keyString.includes(userQuery) || valueString.includes(userQuery)) {
-          return true;
+    if (req.query.q) {
+      const userQuery = req.query.q.toLowerCase();
+      const filteredDocument = documents.filter((info) => {
+        for (const [key, value] of Object.entries(info)) {
+          const valueString = String(value).toLowerCase();
+          const keyString = String(key).toLowerCase();
+          if (
+            keyString.includes(userQuery) ||
+            valueString.includes(userQuery)
+          ) {
+            return true;
+          }
         }
-      }
-    });
-    res.json({ data: filteredDocument });
+      });
+      res.json({ data: filteredDocument });
+    } else {
+      res.json({ documents });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

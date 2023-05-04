@@ -25,18 +25,16 @@ const contactsAPIRouter = express.Router();
 apiRouter.use("/contacts", contactsAPIRouter);
 
 contactsAPIRouter.get("/", async (req, res) => {
-  let query = knex.select("*").from("contacts");
-
-  //   if ("sort" in req.query) {
-  //     const orderBy = req.query.sort.toString();
-  //     console.log(req.query);
-  // if (orderBy.length > 0) {
-  //   query = query.orderByRaw(orderBy);
-  //   }
-
-  console.log("SQL", query.toSQL().sql);
-
   try {
+    let query = knex.select("*").from("contacts");
+    console.log(req.query);
+    if (req.query.sort === "first_name ASC") {
+      query = knex.select("*").from("contacts").orderBy("first_name", "asc");
+    } else if (req.query.sort === "last_name DESC") {
+      query = knex.select("*").from("contacts").orderBy("last_name", "desc");
+    }
+    console.log("SQL", query.toSQL().sql);
+
     const data = await query;
     res.json({ data });
   } catch (e) {

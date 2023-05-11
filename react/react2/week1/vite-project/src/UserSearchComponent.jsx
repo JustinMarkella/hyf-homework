@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserInput from "./UserInput";
 import myToken from "./token.js";
+import UserSearchResultComponent from "./UserSearchResultComponent";
 
 const UserSearchComponent = () => {
   const [value, setValue] = useState("");
@@ -54,7 +55,8 @@ const UserSearchComponent = () => {
       {value.length > 0 && (
         <ul>
           {loading && <p>Loading...</p>}
-          {!loading && users.map((user) => <li key={user.id}>{user.login}</li>)}
+          {!loading &&
+            users.map((user) => <UserSearchResultComponent user={user} />)}
         </ul>
       )}
       {users.length === 0 && !loading && <p>No results</p>}

@@ -1,5 +1,7 @@
 Carrots
 Potatos
-Pepper
+Onion
 Cucumbers 
 Tomatos
+Squash
+Dill

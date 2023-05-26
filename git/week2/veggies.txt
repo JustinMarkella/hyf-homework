@@ -1,5 +1,7 @@
 Carrot
 Potato
-Dill
+Cucumber
 Tomato
 Onion
+Squash
+Broccoli

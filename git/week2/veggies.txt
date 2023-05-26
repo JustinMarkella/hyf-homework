@@ -1,5 +1,6 @@
 Carrot
 Potato
+Pumpkin
 Cucumber
 Tomato
 Onion

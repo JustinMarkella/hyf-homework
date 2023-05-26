@@ -1,5 +1,6 @@
 Carrot
 Potato
+Celery
 Onion
 Cucumber
 Tomato

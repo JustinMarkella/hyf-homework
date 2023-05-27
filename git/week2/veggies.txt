@@ -1,5 +1,7 @@
 Cucumber
 Tomato
-Onion
+Salat
 Squash
 Dill
+Broccoli
+Potato

@@ -1,6 +1,6 @@
 Cucumber
 Tomato
-Salat
+Carrot
 Squash
 Dill
 Broccoli

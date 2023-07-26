@@ -1,0 +1,7 @@
+Cucumber
+Tomato
+Carrot
+Squash
+Dill
+Broccoli
+Potato
